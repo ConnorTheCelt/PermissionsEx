@@ -370,12 +370,12 @@ public class PermissionsExPlugin extends JavaPlugin implements Listener {
         public Set<CommandSpec> getImplementationCommands() {
             return ImmutableSet.of(CommandSpec.builder()
                     .setAliases("reload", "rel")
-                    .setDescription(_("Reload the PermissionsEx configuration"))
-                    .setPermission("permissionsex.reload")
+                    .setDescription(_("Reload the pPex configuration"))
+                    .setPermission("pPex.reload")
                     .setExecutor(new CommandExecutor() {
                         @Override
                         public <TextType> void execute(final Commander<TextType> src, CommandContext args) throws CommandException {
-                            src.msg(_("Reloading PermissionsEx"));
+                            src.msg(_("Reloading pPex"));
                             Futures.addCallback(reload(), new FutureCallback<Void>() {
                                 @Override
                                 public void onSuccess(@Nullable Void result) {
@@ -384,9 +384,9 @@ public class PermissionsExPlugin extends JavaPlugin implements Listener {
 
                                 @Override
                                 public void onFailure(Throwable t) {
-                                    src.error(_("An error occurred while reloading PEX: %s\n " +
+                                    src.error(_("An error occurred while reloading pPEX: %s\n " +
                                             "Please see the server console for details", t.getLocalizedMessage()));
-                                    logger.error(lf(_("An error occurred while reloading PEX (triggered by %s's command): %s",
+                                    logger.error(lf(_("An error occurred while reloading pPEX (triggered by %s's command): %s",
                                             src.getName(), t.getLocalizedMessage())), t);
                                 }
                             });
